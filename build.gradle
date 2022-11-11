@@ -19,8 +19,8 @@ repositories {
 }
 
 ext {
-    feignVersion = '3.1.2'
-    feignHttpVersion = '11.8'
+    mailVersion = '2.5.6'
+    freemarkerVersion = '2.3.30'
 }
 
 dependencies {
@@ -29,9 +29,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation "org.springframework.cloud:spring-cloud-starter-openfeign:${feignVersion}"
-    implementation "io.github.openfeign:feign-okhttp:${feignHttpVersion}"
-    implementation "io.github.openfeign:feign-httpclient:${feignHttpVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-mail:${mailVersion}"
+    implementation "org.freemarker:freemarker:${freemarkerVersion}"
 }
 
 tasks.named('test') {

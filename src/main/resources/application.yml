@@ -1,0 +1,44 @@
+spring:
+
+  application:
+    name: Chili Potli Service
+    version: 0.0.1
+  mail:
+    username: chilipotli@airsoftware.solutions
+    password: ch1l1Potl1#2022
+    port: 587
+    host: smtp.ionos.mx
+    properties:
+      mail:
+        transport:
+          protocol: smtp
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+        debug: false
+    orders: armando@chilipotli.com; pedidoschilipotli@gmail.com
+    protocol: smtp
+#logging:
+#  pattern:
+#    console: "%d %-5level %logger : id:%X{id} : %msg%n"
+#    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [%-10.10t] %c{1} - %msg%n"
+#  level:
+#    root: DEBUG
+#    com.airsoftware: INFO
+#    com.zaxxer.hikari: INFO
+#    org.hibernate.SQL: INFO
+endpoints:
+  shutdown:
+    sensitive: false
+    enabled: true
+  health:
+    sensitive: false
+
+management:
+  health:
+    mail:
+      enabled: true
+
+delivery:
+  cost: 50.0

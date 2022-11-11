@@ -1,16 +1,22 @@
 package com.airsoftware.chilipotliservice.control;
 
-import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.airsoftware.chilipotliservice.model.Order;
+import com.airsoftware.chilipotliservice.service.OrderService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RestController
+@RequestMapping("/api/order")
+@CrossOrigin({"http://localhost:4200", "https://chilipotli.com"})
 public class OrderController {
 
-  @PostMapping
-  public void generateOrder() {
+  private final OrderService orderService;
 
+  @PostMapping
+  public Order create(@RequestBody Order order) {
+    orderService.sendOrderByEmail(order);
+    return order;
   }
 
 }
