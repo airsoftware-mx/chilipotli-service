@@ -23,7 +23,7 @@ spring:
     gcp:
       datastore:
         credentials:
-          location: 'file:/etc/keys/airsoftware-5908f25c2d2b.json'
+          location: 'file:/etc/keys/airsoftware-5908f25c2d2b.jso'
         project-id: airsoftware
 #logging:
 #  pattern:
