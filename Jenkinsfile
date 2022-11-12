@@ -45,6 +45,7 @@ pipeline {
                 script {
                     if (ENVIRONMENT != 'undefined') {
                         sh "./gradlew clean build"
+                        sh 'cp /etc/keys/airsoftware-5908f25c2d2b.json .'
                         sh "docker image prune --force"
                         sh "cat ${DOCKER_PASS_PATH_SRC} | docker login --username ${DOCKER_USR} --password-stdin"
                         sh "docker build -t ${DOCKER_IMG} ."
