@@ -17,7 +17,7 @@ spring:
           starttls:
             enable: true
         debug: false
-    orders: armando@chilipotli.com; pedidoschilipotli@gmail.com
+    orders: armando@chilipotli.com; elba@chilipotli.com; pedidoschilipotli@gmail.com
     protocol: smtp
   cloud:
     gcp:
