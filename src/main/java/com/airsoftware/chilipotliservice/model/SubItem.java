@@ -14,12 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Order {
+public class SubItem {
 
-  @Id
-  private Long id;
-  private List<Item> items;
-  private Customer customer;
-  private Double total;
+  private String name;
 
 }

@@ -15,8 +15,12 @@ public class OrderController {
 
   @PostMapping
   public Order create(@RequestBody Order order) {
-    orderService.sendOrderByEmail(order);
-    return order;
+    return orderService.submitOrder(order);
+  }
+
+  @GetMapping
+  public Iterable<Order> findAll() {
+    return orderService.findAllOrders();
   }
 
 }

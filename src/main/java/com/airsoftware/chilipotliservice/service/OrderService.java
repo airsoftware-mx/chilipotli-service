@@ -4,20 +4,24 @@ import com.airsoftware.chilipotliservice.model.EmailOrder;
 import com.airsoftware.chilipotliservice.model.Item;
 import com.airsoftware.chilipotliservice.model.Order;
 import com.airsoftware.chilipotliservice.model.Topping;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.airsoftware.chilipotliservice.repository.OrderRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
+@RequiredArgsConstructor
 public class OrderService {
 
-  @Autowired
-  private MailSenderService mailSenderService;
+  private final MailSenderService mailSenderService;
+  private final OrderRepository orderRepository;
 
   @Value("${delivery.cost}")
   private Double deliveryCost;
 
-  public void sendOrderByEmail(Order order) {
+  private void sendOrderByEmail(Order order) {
     EmailOrder.EmailOrderBuilder emailOrder = EmailOrder.builder();
 
     StringBuilder orderDetail = new StringBuilder();
@@ -43,6 +47,20 @@ public class OrderService {
     emailOrder.address(order.getCustomer().getAddress());
     emailOrder.subtotal(String.format("$ %,.2f", order.getTotal()));
     mailSenderService.sendEmailNewOrder(emailOrder.build());
+  }
+
+  public Order saveOrder(Order order) {
+    return orderRepository.save(order);
+  }
+
+  public Order submitOrder(Order order) {
+    order = saveOrder(order);
+    sendOrderByEmail(order);
+    return order;
+  }
+
+  public Iterable<Order> findAllOrders() {
+    return orderRepository.findAll();
   }
 
 }

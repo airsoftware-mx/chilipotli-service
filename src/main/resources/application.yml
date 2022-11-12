@@ -19,6 +19,12 @@ spring:
         debug: false
     orders: armando@chilipotli.com; pedidoschilipotli@gmail.com
     protocol: smtp
+  cloud:
+    gcp:
+      datastore:
+        credentials:
+          location: 'file:/etc/keys/airsoftware-5908f25c2d2b.json'
+        project-id: airsoftware
 #logging:
 #  pattern:
 #    console: "%d %-5level %logger : id:%X{id} : %msg%n"
