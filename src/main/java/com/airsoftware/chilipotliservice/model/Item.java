@@ -15,7 +15,7 @@ public class Item {
 
   @Id
   private Long id;
-  private String category;
+  private Category category;
   private String name;
   private String description;
   private String image;

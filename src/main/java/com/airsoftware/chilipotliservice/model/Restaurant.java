@@ -7,20 +7,15 @@ import lombok.NoArgsConstructor;
 import org.springframework.cloud.gcp.data.datastore.core.mapping.Entity;
 import org.springframework.data.annotation.Id;
 
-import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-public class Order {
+public class Restaurant {
 
   @Id
   private Long id;
-  private Restaurant restaurant;
-  private List<Item> items;
-  private Customer customer;
-  private Double total;
+  private String name;
 
 }

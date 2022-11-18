@@ -15,14 +15,25 @@ public class ItemController {
 
   private final ItemService itemService;
 
+
   @GetMapping
   public Iterable<Item> getAll() {
     return itemService.findAll();
   }
 
+  @GetMapping("/{restaurantId}")
+  public Iterable<Item> getAll(@PathVariable("restaurantId") Long restaurantId) {
+    return itemService.findAll(restaurantId);
+  }
+
   @PostMapping
   public Item create(@RequestBody Item item) {
     return itemService.create(item);
+  }
+
+  @PutMapping
+  public Item update(@RequestBody Item item) {
+    return itemService.update(item);
   }
 
   @PostMapping("/bulk")
