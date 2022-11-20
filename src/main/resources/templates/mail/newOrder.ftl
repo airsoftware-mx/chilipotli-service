@@ -365,6 +365,7 @@
                 </tr>
                 <tr>
                   <td>
+                    <p>Restaurante: ${restaurant}</p>
                     <#noautoesc>
                     <div>
                       <p>Detalles de la orden:</p>

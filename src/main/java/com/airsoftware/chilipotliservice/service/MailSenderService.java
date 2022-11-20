@@ -65,6 +65,7 @@ public class MailSenderService {
   public void sendEmailNewOrder(EmailOrder emailOrder) {
     try {
       Map context = new HashMap();
+      context.put("restaurant", emailOrder.getRestaurant());
       context.put("orderDetail", emailOrder.getOrderDetail());
       context.put("customerName", emailOrder.getCustomerName());
       context.put("customerPhone", emailOrder.getCustomerPhone());

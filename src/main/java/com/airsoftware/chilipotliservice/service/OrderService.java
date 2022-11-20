@@ -40,6 +40,7 @@ public class OrderService {
         }
       }
     }
+    emailOrder.restaurant(order.getRestaurant().getName());
     emailOrder.orderDetail(orderDetail.toString());
     emailOrder.customerName(order.getCustomer().getName());
     emailOrder.customerPhone(order.getCustomer().getPhone());
