@@ -1,15 +1,14 @@
 package com.airsoftware.chilipotliservice.service;
 
-import com.airsoftware.chilipotliservice.model.EmailOrder;
-import com.airsoftware.chilipotliservice.model.Item;
-import com.airsoftware.chilipotliservice.model.Order;
-import com.airsoftware.chilipotliservice.model.Topping;
+import com.airsoftware.chilipotliservice.exception.BadRequestException;
+import com.airsoftware.chilipotliservice.model.*;
 import com.airsoftware.chilipotliservice.repository.OrderRepository;
+import com.airsoftware.chilipotliservice.repository.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +16,7 @@ public class OrderService {
 
   private final MailSenderService mailSenderService;
   private final OrderRepository orderRepository;
+  private final RestaurantRepository restaurantRepository;
 
   @Value("${delivery.cost}")
   private Double deliveryCost;
@@ -55,9 +55,17 @@ public class OrderService {
   }
 
   public Order submitOrder(Order order) {
-    order = saveOrder(order);
-    sendOrderByEmail(order);
-    return order;
+    if (order.getRestaurant() == null || order.getRestaurant().getId() == null) {
+      throw new BadRequestException("Id of restaurant can't be null.");
+    }
+    final Optional<Restaurant> restaurantOptional = restaurantRepository.findById(order.getRestaurant().getId());
+    if(restaurantOptional.isPresent()) {
+      order.setRestaurant(restaurantOptional.get());
+      sendOrderByEmail(order);
+      return saveOrder(order);
+    } else {
+      throw new BadRequestException("Restaurant not found.");
+    }
   }
 
   public Iterable<Order> findAllOrders() {
