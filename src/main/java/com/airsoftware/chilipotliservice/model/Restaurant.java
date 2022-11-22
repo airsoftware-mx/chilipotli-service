@@ -11,7 +11,7 @@ import org.springframework.data.annotation.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
+@Entity(name = "restaurant-dev")
 public class Restaurant {
 
   @Id

@@ -10,7 +10,7 @@ import org.springframework.cloud.gcp.data.datastore.core.mapping.Entity;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
+@Entity(name = "customer-dev")
 public class Customer {
 
   private String address;
