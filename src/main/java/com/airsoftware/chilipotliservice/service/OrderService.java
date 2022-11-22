@@ -47,6 +47,11 @@ public class OrderService {
     emailOrder.delivery(order.getCustomer().getDeliveryOption().equals("delivery") ? "Envío" : "Recolección en tienda");
     emailOrder.address(order.getCustomer().getAddress());
     emailOrder.subtotal(String.format("$ %,.2f", order.getTotal()));
+    if (order.getComments() != null) {
+      emailOrder.comments(order.getComments());
+    } else {
+      emailOrder.comments("");
+    }
     mailSenderService.sendEmailNewOrder(emailOrder.build());
   }
 

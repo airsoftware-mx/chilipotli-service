@@ -14,5 +14,6 @@ public class EmailOrder {
   private String subtotal;
   private String customerName;
   private String customerPhone;
+  private String comments;
 
 }

@@ -41,9 +41,14 @@ public class ItemController {
     return itemService.create(items);
   }
 
-  @DeleteMapping
-  public void deleteAll() {
-    itemService.deleteAll();
+  @DeleteMapping("/byRestaurantId/{restaurantId}")
+  public void deleteAll(@PathVariable("restaurantId") Long restaurantId) {
+    itemService.deleteAll(restaurantId);
+  }
+
+  @DeleteMapping("/{itemId}")
+  public void delete(@PathVariable("itemId") Long itemId) {
+    itemService.delete(itemId);
   }
 
 }

@@ -41,8 +41,12 @@ public class ItemService {
     return itemRepository.saveAll(items);
   }
 
-  public void deleteAll() {
-    itemRepository.deleteAll();
+  public void deleteAll(Long restaurantId) {
+    itemRepository.deleteAll(findAll(restaurantId));
+  }
+
+  public void delete(Long itemId) {
+    itemRepository.deleteById(itemId);
   }
 
   public Item update(Item item) {

@@ -377,6 +377,7 @@
                     <p>Teléfono: ${customerPhone} <a href="https://wa.me/+52${customerPhone}">Contactar por Whatsapp</a></p>
                     <p>Entrega: ${delivery}</p>
                     <p>Dirección envío: ${address}</p>
+                    <p>Comentarios: ${comments}</p>
                     <p>Sub total: ${subtotal}</p>
                   </td>
                 </tr>

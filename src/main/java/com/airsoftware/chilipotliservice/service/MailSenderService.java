@@ -71,6 +71,7 @@ public class MailSenderService {
       context.put("customerPhone", emailOrder.getCustomerPhone());
       context.put("delivery", emailOrder.getDelivery());
       context.put("address", emailOrder.getAddress());
+      context.put("comments", emailOrder.getComments());
       context.put("subtotal", emailOrder.getSubtotal());
       String[] mailTo = mailOrders.split(";");
       sendMail(mailTo, "Nuevo Pedido " + emailOrder.getCustomerName(), generateContent("newOrder.ftl", context));

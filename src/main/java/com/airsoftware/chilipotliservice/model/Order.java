@@ -22,5 +22,6 @@ public class Order {
   private List<Item> items;
   private Customer customer;
   private Double total;
+  private String comments;
 
 }
