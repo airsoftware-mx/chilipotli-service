@@ -22,7 +22,7 @@ public class CategoryService {
   private final ItemService itemService;
 
   public Iterable<Category> findAll() {
-    return categoryRepository.findAll();
+    return categoryRepository.findByOrderBySortAsc();
   }
 
   public List<Category> findAllByRestaurant(Long restaurantId) {
